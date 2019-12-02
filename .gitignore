@@ -45,3 +45,6 @@ Temporary Items
 # Genereated site
 *_site
 
+# Node
+node_modules
+

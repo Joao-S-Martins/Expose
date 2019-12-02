@@ -1,0 +1,22 @@
+{
+  "name": "expose",
+  "version": "0.9.0",
+  "description": "My custom implementation of Expose.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Joao-S-Martins/Expose.git"
+  },
+  "author": "Joao S. Martins",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Joao-S-Martins/Expose/issues"
+  },
+  "homepage": "https://github.com/Joao-S-Martins/Expose#readme",
+  "devDependencies": {
+    "foundation-sites": "^6.5.3"
+  }
+}
