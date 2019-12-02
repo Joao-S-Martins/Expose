@@ -7,4 +7,5 @@
 [ ] 50/50 split image/text layout. Reversible for text/image.
 [ ] Text overlay on images or maybe following images.
 [ ] Cool scrolling transitions, like the FAASL site.
+[ ] Upgrade to Bootstrap v4
 
