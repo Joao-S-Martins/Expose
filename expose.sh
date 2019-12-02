@@ -10,9 +10,9 @@ if [ -f "$topdir/_config.sh" ]; then
   . "$topdir/_config.sh"
 fi
 
-site_title=${site_title:-"My Awesome Photos"}
+site_title=${site_title:-"Joao's Site"}
 
-theme_dir=${theme_dir:-"theme1"}
+theme_dir=${theme_dir:-"site"}
 
 # widths to scale images to (heights are calculated from source images)
 # you might want to change this for example, if your images aren't full screen on the browser side
@@ -35,12 +35,12 @@ bitrate=(40 24 12 7 4 2)
 
 bitrate_maxratio=${bitrate_maxratio:-2} # a multiple of target bitrate to get max bitrate for VBR encoding. must be > 1. Higher ratio gives better quality on scenes with lots of movement. Ratio=1 reduces to CBR encoding
 
-disable_audio=${disable_audio:-true}
+disable_audio=${disable_audio:-false}
 
 # extract a representative palette for each photo/video and use those colors for background/text/accent etc
 extract_colors=${extract_colors:-true}
 
-backgroundcolor=${backgroundcolor:-"#000000"} # slide background, visible only before image has loaded
+backgroundcolor=${backgroundcolor:-"#FFFFFF"} # slide background, visible only before image has loaded
 textcolor=${textcolor:-"#ffffff"} # default text color
 
 # palette of 7 colors, background to foreground, to be used if color extraction is disabled
@@ -54,17 +54,19 @@ text_toggle=${text_toggle:-true}
 social_button=${social_button:-true}
 
 # option to put the full image/video in a zip file with a license readme.txt
-download_button=${download_button:-false}
-download_readme=${download_readme:-"All rights reserved"}
+download_button=${download_button:-true}
+download_readme=${download_readme:-"Copyright Joao S. Martins. All rights reserved."}
 
 # disqus forum name. Leave blank to disable comments
-disqus_shortname=${disqus_shortname:-""}
+disqus_shortname=${disqus_shortname:-"fuck_disqus"}
 
 # arbitrary list of extensions we'll assume are video files.
 video_extensions=(3g2 3gp 3gp2 asf avi dvr-ms exr ffindex ffpreset flv gxf h261 h263 h264 h265 ifv m2t m2ts mts m4v mkv mod mov mp4 mpg mxf tod vob webm wmv y4m)
 
 sequence_keyword=${sequence_keyword:-"imagesequence"} # if a directory name contains this keyword, treat it as an image sequence and compile it into a video
-sequence_framerate=${sequence_framerate:-24} # sequence framerat
+sequence_framerate=${sequence_framerate:-25} # sequence framerate
+
+parallax_keyword=${parallax_keyword:-"parallax"} # if a file name contains this keyword, ignore it
 
 # specific codec options here
 h264_encodespeed=${h264_encodespeed:-"veryslow"} # h264 encode speed, slower produces better compression results. Options are ultrafast,superfast, veryfast, faster, fast, medium, slow, slower, veryslow
@@ -127,7 +129,7 @@ metadata_file="metadata.txt" # search for this file in each gallery directory fo
 gallery_files=() # a flat list of all gallery images and videos
 gallery_nav=() # index of nav item the gallery image belongs to
 gallery_url=() # url-friendly name of each image
-gallery_type=() # 0 = image, 1 = video, 2 = image sequence
+gallery_type=() # 0 = image, 1 = video, 2 = image sequence, 3 = parallax
 gallery_maxwidth=() # maximum image size available
 gallery_maxheight=() # maximum height
 gallery_colors=() # extracted color palette for each image
@@ -216,7 +218,7 @@ do
 	fi
 		
 	dircount=$(find "$node" -maxdepth 1 -type d ! -path "$node" ! -path "$node*/_*" | wc -l)
-	dircount_sequence=$(find "$node" -maxdepth 1 -type d ! -path "$node" ! -path "$node*/_*" ! -path "$node/*$sequence_keyword*" | wc -l)
+	dircount_sequence=$(find "$node" -maxdepth 1 -type d ! -path "$node" ! -path "$node*/_*" ! -path "$node/*$sequence_keyword*" ! -path "$node/*$parallax_keyword*" | wc -l)
 	
 	if [ "$dircount" -gt 0 ]
 	then
@@ -227,9 +229,9 @@ do
 			node_type=1 # dir contains other dirs, but they are imagesequence dirs which are not galleries
 		fi
 	else
-		if [ ! -z "$sequence_keyword" ] && [ $(echo "$node_name" | grep "$sequence_keyword" | wc -l) -gt 0 ]
+		if [ ! -z "$sequence_keyword" ] && [ $(echo "$node_name" | grep "$sequence_keyword" | wc -l) -gt 0 ] && [ ! -z "$parallax_keyword" ] && [ $(echo "$node_name" | grep "$parallax_keyword" | wc -l) -gt 0 ]
 		then
-			continue # dir is an imagesequence dir, it is in effect a video. Do not add to the path list
+			continue # dir is an imagesequence or parallax dir, it is in effect a video or image. Do not add to the path list
 		else
 			node_type=1 # does not contain other dirs, and is not image sequence. It is a leaf
 		fi
