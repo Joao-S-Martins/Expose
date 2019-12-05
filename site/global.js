@@ -42,6 +42,7 @@ $(document).ready(function(){
 	$('.image.index1').append('<div class="overlay" style="background-color: '+$('.image.index1').data('color2')+'"></div>');
 	$('.image').not('.index1, .fullwidth').click(function(){
 		// full screen mode
+		// TODO (joao) Fix clicked .background images
 		$('#fullscreen').addClass('active').append($(this).find('img').clone());
 		var img = $('#fullscreen img');
 		
@@ -153,7 +154,12 @@ function scrollcheck(){
 				}
 			});
 			
-			img.prop('src',url+'/'+displaywidth+'.jpg');
+			if ($(this).parent().hasClass('background')) {
+				$(this).css('background-image','url('+url+'/'+displaywidth+'.jpg)');
+				img.css('visibility', 'hidden');
+			} else {
+				img.prop('src',url+'/'+displaywidth+'.jpg');
+			}
 			$(this).removeClass('blank');
 			
 			// videos
