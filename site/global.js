@@ -128,7 +128,7 @@ $(document).ready(function(){
 			}
 		});
 		
-		$('#nav li.gallery').not('.active').each(function(){
+		$('#nav li.gallery').each(function(){
 			$(this).append('<img src="'+$(this).find('a').prop('href')+'/'+$(this).data('image')+'/'+resolution[0]+'.jpg" />');
 		});
 	}
