@@ -11,8 +11,22 @@
 		<script src="{{basepath}}global.js"></script>
 
 
-		<link rel="stylesheet" href="foundation.css">
+		<link rel="stylesheet" href="{{basepath}}foundation.css">
 
+		<style type="text/css">
+			#gallery.grid-container {
+				padding: 0;
+				margin: 0;
+			}
+
+			.image {
+				margin: 0;
+			}
+
+
+
+
+		</style>
 
 	</head>
 <body data-resolution="{{resolution}}" data-respath="{{resourcepath}}">
@@ -34,7 +48,7 @@
 	</div>
 </div>
 
-<div class="wrapper" id="main">
+<div class="grid-container" id="gallery">
 	{{content}}
 	
 	<div id="footer">
