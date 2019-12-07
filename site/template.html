@@ -23,11 +23,11 @@
 				margin: 0;
 			}
 
-			.image img {
-				position: relative;
+			.image.background img {
+				/*position: relative;*/
 			}
 
-			.background .image {
+			.image.background {
 				height: 100vh;
 				width: 100vw;
 				background: no-repeat fixed center center / cover;
@@ -40,7 +40,7 @@
 
 	</head>
 <body data-resolution="{{resolution}}" data-respath="{{resourcepath}}">
-<div id="top">
+<main id="top">
 	<!--div id="nav">
 		{{navigation}}
 	</div>
@@ -58,10 +58,10 @@
 	</div>
 </div-->
 
-<div class="grid-container fluid" id="gallery">
-	<div class="grid-x align-center">
+<section class="grid-container fluid" id="gallery">
+	<article></article> class="grid-x align-center">
 		{{content}}
-	</div>
+	</article>
 	<!--div id="footer">
 	<div class="author center">
 		<img src="{{basepath}}img/camera.png" alt="" />
@@ -71,12 +71,12 @@
 		</span>
 	</div-->
 	
-</div>
+</section>
 
 <div id="fullscreenvideo"></div>
 <div id="fullscreen"></div>
 
-</div>
+</main>
 
 
 </body>
