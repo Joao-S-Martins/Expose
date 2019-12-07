@@ -23,6 +23,10 @@
 				margin: 0;
 			}
 
+			.image img {
+				position: relative;
+			}
+
 			.background .image {
 				height: 100vh;
 				width: 100vw;
@@ -37,7 +41,7 @@
 	</head>
 <body data-resolution="{{resolution}}" data-respath="{{resourcepath}}">
 <div id="top">
-	<div id="nav">
+	<!--div id="nav">
 		{{navigation}}
 	</div>
 	<div class="wrapper">
@@ -52,19 +56,20 @@
 		
 		<a href="#" id="nav_toggle"><span class="arrow_circle"><span class="arrow_down"></span></span><span class="moretext">More Stories</span></a>
 	</div>
-</div>
+</div-->
 
-<div class="grid-container" id="gallery">
-	{{content}}
-	
-	<div id="footer">
+<div class="grid-container fluid" id="gallery">
+	<div class="grid-x align-center">
+		{{content}}
+	</div>
+	<!--div id="footer">
 	<div class="author center">
 		<img src="{{basepath}}img/camera.png" alt="" />
 		<span class="title">
 		{{sitetitle}}
 		<span class="subscript">{{gallerytitle}}</span>
 		</span>
-	</div>
+	</div-->
 	
 </div>
 
