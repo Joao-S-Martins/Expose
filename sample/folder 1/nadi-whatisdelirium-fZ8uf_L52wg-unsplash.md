@@ -1,4 +1,5 @@
 ---
+caption: A cat surrounded by leaves.
 class: background
 ---
 
