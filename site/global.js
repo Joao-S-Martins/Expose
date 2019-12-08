@@ -43,8 +43,8 @@ $(document).ready(function(){
 	$('.image').not('.index1, .fullwidth').click(function(){
 		// full screen mode
 		// TODO (joao) Fix clicked .background images
-		$('#fullscreen').addClass('active').append($(this).find('img').clone());
-		var img = $('#fullscreen img');
+		$('#modal').addClass('active').append($(this).find('img').clone());
+		var img = $('#modal img');
 		
 		var imgwidth = img.prop('width');
 		var imgheight = img.prop('height');
@@ -53,12 +53,13 @@ $(document).ready(function(){
 		var screenheight = $(window).height();
 		
 		// check aspect ratio
-		if(imgwidth/imgheight > screenwidth/screenheight){
+		if(imgwidth/imgheight > screenwidth/screenheight){ // Landscape orientation
 			img.css('width','100%').css('height','auto').css('margin-top',(0.5*(screenheight-img.height()))+'px');
 		}
-		else{
+		else{ // Portrait orientation
 			img.css('height','100%').css('width','auto');
 		}
+		img.css('visibility', 'visible'); // In the case of background-fixed images
 		
 		width = img.width();
 		var url = resourcepath + img.data('url');
@@ -71,10 +72,12 @@ $(document).ready(function(){
 		});
 		
 		img.prop('src',url+'/'+displaywidth+'.jpg');
-		
+		$('#modal').foundation('open');
+		return false; // DEBUG (joao) Test video modals
+
 		// set video
-		$('#fullscreenvideo').addClass('active').append($(this).find('video, .progress').clone());
-		var video = $('#fullscreenvideo video');
+		$('#modal').addClass('active').append($(this).find('video, .progress').clone());
+		var video = $('#modal video');
 		if(imgwidth/imgheight > screenwidth/screenheight){
 			video.css('width','100%').css('height','auto').css('margin-top',(0.5*(screenheight-video.height()))+'px');
 		}
@@ -82,11 +85,11 @@ $(document).ready(function(){
 			video.css('height','100%').css('width','auto');
 		}
 		
-		$('#fullscreenvideo video source').each(function(){
+		$('#modal video source').each(function(){
 			$(this).prop('src', url+'/'+displaywidth+'-'+$(this).data('format')+'.'+$(this).data('extension'));
 		});
 		
-		$('#fullscreenvideo .progress').addClass('active');
+		$('#modal .progress').addClass('active');
 		
 		if(video.length > 0){
 			video.get(0).addEventListener('progress', function() {
@@ -106,9 +109,11 @@ $(document).ready(function(){
 		return false;
 	});
 	
-	$('#fullscreen, #fullscreenvideo').click(function(){
-		$('#fullscreen, #fullscreenvideo').empty();
-		$('#fullscreen, #fullscreenvideo').removeClass('active');
+	// TODO (joao) Close on ESC key
+	$('#modal').click(function(){
+		$('#modal').foundation('close');
+		$('#modal').empty();
+		$('#modal').removeClass('active');
 	});
 	
 	if($('#nav li').length <= 1){
