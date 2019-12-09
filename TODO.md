@@ -6,6 +6,9 @@
 [ ] Fix splash image height.
 [ ] 50/50 split image/text layout. Reversible for text/image.
 [ ] Text overlay on images or maybe following images.
-[ ] Cool scrolling transitions, like the FAASL site.
-[ ] Upgrade to Foundation
-
+[ ] Cool scrolling transitions, like the FAASL site, using Motion UI.
+[ ] Upgrade to Foundation.
+[ ] Off-canvas about section.
+[ ] Image replace using Interchange.
+[ ] Magellan for smooth navigation.
+[ ] Sticky nav.

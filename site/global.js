@@ -241,6 +241,9 @@ throttle = function(func, wait, options) {
   
 var throttled = throttle(scrollcheck, 700);
 $(window).scroll(throttled);
+// Throttle scoll checks
+// TODO (joao) Replace throttling
+// $(window).scroll(Foundation.utils.throttle(scrollcheck, 700));
 
 function findoverlap(elem)
 {
