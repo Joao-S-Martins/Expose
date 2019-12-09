@@ -35,8 +35,28 @@
 				background: no-repeat fixed center center / cover;
 			}
 
+			main {
+				padding: 0;
+			}
+
 			#modal {
 				padding: 0;
+			}
+
+			.title-bar-wrapper {
+				z-index: 1;
+			}
+
+			.h1.title {
+				z-index: 1;
+				position: absolute;
+				width: 100%;
+				color: black;
+			}
+
+			/* HACK (joao) https://github.com/foundation/foundation-sites/issues/11098 */
+			.is-at-bottom {
+			  top: 0 !important;
 			}
 
 
@@ -44,10 +64,40 @@
 
 	</head>
 <body data-resolution="{{resolution}}" data-respath="{{resourcepath}}">
-<main id="top">
-	<!--div id="nav">
-		{{navigation}}
+<main>
+	<div class="title-bar-wrapper" data-sticky-container>
+		<div class="sticky" data-sticky data-margin-top="0">
+			<div class="title-bar" data-responsive-toggle="responsive-menu" data-hide-for="medium">
+				<div class="title-bar-left">
+				  <button class="menu-icon" type="button" data-toggle="responsive-menu"></button>
+				  <div class="title-bar-title">Menu</div>
+				</div>
+				<div class="title-bar-right">
+				  <button type="button" class="button" data-toggle="offCanvas">About</button>
+				</div>
+			</div>
+
+			<div class="top-bar" id="responsive-menu">
+			  <div class="top-bar-left">
+			    <ul class="dropdown menu" data-dropdown-menu>
+			      <li class="menu-text">{{sitetitle}}</li>
+			      {{navigation}}
+			    </ul>
+			  </div>
+			  <div class="top-bar-right">
+			    <ul class="menu">
+			      <li><button type="button" class="button" data-toggle="offCanvas">About</button></li>
+			    </ul>
+			  </div>
+			</div>
+		</div>
 	</div>
+
+
+
+	<!--nav id="nav">
+		{{navigation}}
+	</nav>
 	<div class="wrapper">
 		<div class="author">
 			<img src="{{basepath}}img/camera.png" alt="" />
@@ -61,25 +111,33 @@
 		<a href="#" id="nav_toggle"><span class="arrow_circle"><span class="arrow_down"></span></span><span class="moretext">More Stories</span></a>
 	</div>
 </div-->
-
-<section class="grid-container fluid" id="gallery">
-	<article></article> class="grid-x align-center">
-		{{content}}
-	</article>
-	<!--div id="footer">
-	<div class="author center">
-		<img src="{{basepath}}img/camera.png" alt="" />
-		<span class="title">
-		{{sitetitle}}
-		<span class="subscript">{{gallerytitle}}</span>
-		</span>
-	</div-->
-	
-</section>
-
+<div class="off-canvas-wrapper">
+	<section class="grid-container fluid off-canvas-content" id="gallery" data-off-canvas-content>
+		<h1 class="title">{{gallerytitle}}</h1>
+		<article class="grid-x align-center">
+			{{content}}
+		</article>
+		<!--div id="footer">
+		<div class="author center">
+			<img src="{{basepath}}img/camera.png" alt="" />
+			<span class="title">
+			{{sitetitle}}
+			<span class="subscript">{{gallerytitle}}</span>
+			</span>
+		</div-->
+		
+	</section>
+	</main>
+	<aside class="off-canvas position-right" id="offCanvas" data-off-canvas>
+	  <!-- Close button -->
+	  <button class="close-button" aria-label="Close menu" type="button" data-close>
+	    <span aria-hidden="true">&times;</span>
+	  </button>
+	  <h3 class="h4">About Me</h3>
+	</aside>
+</div>
 <div class="full reveal text-center" id="modal" data-reveal></div>
 
-</main>
 <script>
   $(document).foundation();
 </script>
