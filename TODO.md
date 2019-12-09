@@ -8,7 +8,17 @@
 [ ] Text overlay on images or maybe following images.
 [ ] Cool scrolling transitions, like the FAASL site, using Motion UI.
 [ ] Upgrade to Foundation.
-[ ] Off-canvas about section.
+[ ] Off-canvas about & nav.
 [ ] Image replace using Interchange.
-[ ] Magellan for smooth navigation.
-[ ] Sticky nav.
+[ ] Magellan for smooth navigation & progress bar.
+[ ] Hover thumbnails for progress bar.
+[ ] Vertical progress bar on left or horizontal progress bar on bottom?
+[ ] Sticky menu button to off-canvas nav.
+[ ] `full-width` image class to fit to width and scroll for image.
+[ ] `inline` image class to fit photo to screen without clipping. Default behavior?
+[ ] `fill-screen` image class to fill screen height and width, clipping necessary.
+[ ] `portrait` image class to fill screen height and clip width if necessary.
+[ ] `landscape` image class to fill screen width and clip height if necessary.
+[ ] `focus-*` image class to shift clipping. `*` can be `left` or `right` and `top` or `bottom`. Vertical directions work with `portrait`. Horizontal directions work with `landscape`. All directions work with `fill-screen`.
+[ ] `fixed-window` image class to fix any image to the background. Works with all other image classes.
+[ ] Define text display classes for splitting and overlaying.
