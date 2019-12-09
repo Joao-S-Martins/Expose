@@ -47,7 +47,13 @@
 				z-index: 1;
 			}
 
-			.h1.title {
+			.title-bar {
+				background: none;
+				position: fixed;
+				z-index: 1;
+			}
+
+			h1.title {
 				z-index: 1;
 				position: absolute;
 				width: 100%;
@@ -65,33 +71,18 @@
 	</head>
 <body data-resolution="{{resolution}}" data-respath="{{resourcepath}}">
 <main>
-	<div class="title-bar-wrapper" data-sticky-container>
-		<div class="sticky" data-sticky data-margin-top="0">
-			<div class="title-bar" data-responsive-toggle="responsive-menu" data-hide-for="medium">
+	<!-- <div class="title-bar-wrapper" data-sticky-container>
+		<div class="sticky" data-sticky data-margin-top="0"> -->
+			<div class="title-bar">
 				<div class="title-bar-left">
-				  <button class="menu-icon" type="button" data-toggle="responsive-menu"></button>
-				  <div class="title-bar-title">Menu</div>
-				</div>
-				<div class="title-bar-right">
-				  <button type="button" class="button" data-toggle="offCanvas">About</button>
+				  <button class="hollow button" type="button" data-toggle="offCanvas">
+				  	<i class="menu-icon"></i>
+				  	<span class="show-for-sr">Menu</span>
+				  </button>
 				</div>
 			</div>
-
-			<div class="top-bar" id="responsive-menu">
-			  <div class="top-bar-left">
-			    <ul class="dropdown menu" data-dropdown-menu>
-			      <li class="menu-text">{{sitetitle}}</li>
-			      {{navigation}}
-			    </ul>
-			  </div>
-			  <div class="top-bar-right">
-			    <ul class="menu">
-			      <li><button type="button" class="button" data-toggle="offCanvas">About</button></li>
-			    </ul>
-			  </div>
-			</div>
-		</div>
-	</div>
+	<!-- 	</div>
+	</div> -->
 
 
 
@@ -128,12 +119,18 @@
 		
 	</section>
 	</main>
-	<aside class="off-canvas position-right" id="offCanvas" data-off-canvas>
+	<aside class="off-canvas position-left" id="offCanvas" data-off-canvas>
 	  <!-- Close button -->
 	  <button class="close-button" aria-label="Close menu" type="button" data-close>
 	    <span aria-hidden="true">&times;</span>
 	  </button>
 	  <h3 class="h4">About Me</h3>
+  	<nav>
+		  <ul class="dropdown menu" data-dropdown-menu>
+	      <li class="menu-text">{{sitetitle}}</li>
+	      {{navigation}}
+	    </ul>
+	  </nav>
 	</aside>
 </div>
 <div class="full reveal text-center" id="modal" data-reveal></div>
