@@ -5,8 +5,14 @@
   	</div>
 	</div-->
 
-	<figure class="image blank index{{index}} cell {{class}}" style="color: {{textcolor}}; background-color: {{backgroundcolor}}; width: {{width}}%" data-type="{{type}}" data-maxwidth="{{imagewidth}}" data-maxheight="{{imageheight}}" data-textcolor="{{textcolor}}" data-color1="{{color1}}" data-color2="{{color2}}" data-color3="{{color3}}" data-color4="{{color4}}" data-color5="{{color5}}" data-color6="{{color6}}" data-color7="{{color7}}" data-videoformats="{{videoformats}}">
-		<img src="//:0" width="{{imagewidth}}" height="{{imageheight}}" data-url="{{imageurl}}" alt="{{caption}}" />
+	<!-- <figure class="image blank index{{index}} cell {{class}}" style="color: {{textcolor}}; background-color: {{backgroundcolor}}; width: {{width}}%" data-type="{{type}}" data-maxwidth="{{imagewidth}}" data-maxheight="{{imageheight}}" data-textcolor="{{textcolor}}" data-color1="{{color1}}" data-color2="{{color2}}" data-color3="{{color3}}" data-color4="{{color4}}" data-color5="{{color5}}" data-color6="{{color6}}" data-color7="{{color7}}" data-videoformats="{{videoformats}}">
+		<img src="//:0" class="screen-reader-only" width="{{imagewidth}}" height="{{imageheight}}" data-url="{{imageurl}}" alt="{{caption}}" />
     <figcaption>{{post}}</figcaption>
-	</figure>
+	</figure> -->
+  <div class="wrapper cell {{class}}">
+    <div class="post">{{post}}</div class="caption">
+    <div class="image blank index{{index}}" style="color: {{textcolor}}; background-color: {{backgroundcolor}}; width: {{width}}%" data-type="{{type}}" data-maxwidth="{{imagewidth}}" data-maxheight="{{imageheight}}" data-textcolor="{{textcolor}}" data-color1="{{color1}}" data-color2="{{color2}}" data-color3="{{color3}}" data-color4="{{color4}}" data-color5="{{color5}}" data-color6="{{color6}}" data-color7="{{color7}}" data-videoformats="{{videoformats}}">
+      <img src="//:0" width="{{imagewidth}}" height="{{imageheight}}" data-url="{{imageurl}}" alt="{{caption}}" />
+    </div>
+</div>
 <!--/div-->

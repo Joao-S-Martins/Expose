@@ -8,14 +8,15 @@
 [ ] Text overlay on images or maybe following images.
 [ ] Cool scrolling transitions, like the FAASL site, using Motion UI.
 [ ] Upgrade to Foundation.
+[ ] Fix issue where portraits record height as max-width.
 [ ] Off-canvas about & nav.
 [ ] Image replace using Interchange.
 [ ] Magellan for smooth navigation & progress bar.
 [ ] Hover thumbnails for progress bar.
 [ ] Vertical progress bar on left or horizontal progress bar on bottom?
 [ ] Sticky menu button to off-canvas nav.
-[ ] `full-width` image class to fit to width and scroll for image.
-[ ] `inline` image class to fit photo to screen without clipping. Default behavior?
+[ ] `full-width` image class to fit to width and scroll for image. Default behavior.
+[ ] `fit-scren` image class to fit photo to screen without clipping.
 [ ] `fill-screen` image class to fill screen height and width, clipping necessary.
 [ ] `portrait` image class to fill screen height and clip width if necessary.
 [ ] `landscape` image class to fill screen width and clip height if necessary.

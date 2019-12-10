@@ -23,16 +23,13 @@
 
 			.image {
 				margin: 0;
+				background-position: 50% 50%;
+		    background-repeat: no-repeat;
+		    background-size: contain;
 			}
 
-			.image.background img {
-				/*position: relative;*/
-			}
-
-			.image.background {
-				height: 100vh;
-				width: 100vw;
-				background: no-repeat fixed center center / cover;
+			.image img {
+				display: none;
 			}
 
 			main {
@@ -64,6 +61,23 @@
 			.is-at-bottom {
 			  top: 0 !important;
 			}
+
+			.portrait .image {
+				height: 100vh;
+				padding: 0;
+				background-size: cover;
+			}
+
+			.landscape .image {
+				width: 100vw;
+				background-size: cover;
+			}
+
+			.fixed-window .image {
+				background-attachment: fixed;
+				padding-top: 100vh !important;
+			}
+/* transform: translate3d(0px, 0px, 0px) scale(1.06049, 1.06049);*/
 
 
 		</style>

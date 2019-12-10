@@ -17,8 +17,9 @@ $(document).ready(function(){
 	
 	$('.image.index1').css('width','125%'); // first image is masthead, do not allow content override
 	
-	$('.image').not('.background').each(function(){
-		$(this).css('padding-top', (100*$(this).data('maxheight')/$(this).data('maxwidth'))*($(this).width()/mainwidth) + '%');
+	// Set each `.image` padding to appropriate ratio.
+	$('.image').each(function(){
+		$(this).css('padding-top', (100*$(this).data('maxheight')/$(this).data('maxwidth')) + 'vw');
 	});
 	
 	$.each(String($('body').data('resolution')).split(" "),function(i, v){
@@ -30,7 +31,7 @@ $(document).ready(function(){
 	resolution.sort(function(a, b){return a-b;});
 	
 	// remove empty captions
-	$('figcaption').filter(function() {
+	$('.post').filter(function() {
         return $.trim($(this).text()) === '' && $(this).children().length === 0;
     }).remove();
 	
@@ -150,21 +151,26 @@ function scrollcheck(){
 			var img = $(this).find('img');
 			var url = resourcepath + img.data('url');
 			
-			var width = img.width();
+			var width = $(this).width();
+			var height = $(this).height();
 			var maxwidth = $(this).data('maxwidth');
 			var displaywidth = maxwidth;
+			// TODO (joao) Update for portrait images. Good for Landscapes.
 			$.each(resolution, function(i, v){
-				if(v >= width && v <= maxwidth && v < displaywidth){
+				console.log(v, width, maxwidth, displaywidth);
+				if(v > width && v <= maxwidth && v < displaywidth){
 					displaywidth = v;
 				}
 			});
 			
-			if ($(this).hasClass('background')) {
-				$(this).css('background-image','url('+url+'/'+displaywidth+'.jpg)');
-				img.css('visibility', 'hidden');
-			} else {
-				img.prop('src',url+'/'+displaywidth+'.jpg');
-			}
+			// if ($(this).hasClass('background')) {
+			// 	$(this).css('background-image','url('+url+'/'+displaywidth+'.jpg)');
+			// 	img.css('visibility', 'hidden');
+			// } else {
+			// 	img.prop('src',url+'/'+displaywidth+'.jpg');
+			// }
+			$(this).css('background-image','url('+url+'/'+displaywidth+'.jpg)');
+			img.prop('src',url+'/'+displaywidth+'.jpg');
 			$(this).removeClass('blank');
 			
 			// videos
