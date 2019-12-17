@@ -919,7 +919,6 @@ do
 	
 	# generate static images for each resolution
 	width=$(identify -format "%w" "$image")
-	
 	options=""
 	if [ ! -z "${gallery_image_options[i]}" ]
 	then
@@ -941,7 +940,7 @@ do
 		# only downscale original image
 		if [ "$width" -ge "$res" ] || [ "$count" -eq "${#resolution[@]}" ]
 		then
-			convert $autorotateoption -size "$res"x"$res" "$image" -resize "$res"x"$res" -quality "$jpeg_quality" +profile '*' $options "$topdir/_site/$url/$res.jpg"
+			convert $autorotateoption -size "$res" "$image" -resize "$res" -quality "$jpeg_quality" +profile '*' $options "$topdir/_site/$url/$res.jpg"
 		fi
 	done
 	
