@@ -13,13 +13,36 @@ $(document).ready(function(){
 	resourcepath = $('body').data('respath');
 	
 	// set slide heights to prevent reflow
-	var mainwidth = $('#gallery').width();
+	var wWidth = $('#gallery').width();
+	var wHeight = $( window ).height();
 	
-	$('.image.index1').css('width','125%'); // first image is masthead, do not allow content override
+	// $('.image.index1').css('width','125%'); // first image is masthead, do not allow content override
 	
-	// Set each `.image` padding to appropriate ratio.
-	$('.image').each(function(){
-		$(this).css('padding-top', (100*$(this).data('maxheight')/$(this).data('maxwidth')) + 'vw');
+	// Set some calculated dimensions to each `.image`.
+	$('.image').not('.index1').each(function(){
+		let aspect = ($(this).data('maxheight')/$(this).data('maxwidth'))
+		switch (true) {
+			case $(this).parent().hasClass('portrait'):
+				if ((wHeight / wWidth) > aspect) {
+					// Set background-size
+					$(this).css('background-size', 'cover');
+				}
+				// Height set by CSS
+				break;
+			case $(this).parent().hasClass('landscape') &&
+					(aspect * wWidth) > wHeight:
+				// Set to screen height.
+				$(this).css('height', '100vh');
+				break;
+			case $(this).parent().hasClass('fill-screen'):
+			case $(this).parent().hasClass('fit-screen'):
+				// Do nothing; CSS has it covered.
+				break;
+			case $(this).parent().hasClass('full-width'):
+			default:
+				// Set height to aspect ratio.
+				$(this).css('height', aspect*100 + 'vw');
+		}
 	});
 	
 	$.each(String($('body').data('resolution')).split(" "),function(i, v){
@@ -41,7 +64,7 @@ $(document).ready(function(){
 	$('#top .title .subscript, #nav_toggle').css('color',color);
 	
 // 	$('.image.index1').append('<div class="overlay" style="background-color: '+$('.image.index1').data('color2')+'"></div>');
-	$('.image').not('.index1, .fullwidth').click(function(){
+	$('.image').not('.index1, .full-width').click(function(){
 		// full screen mode
 		// TODO (joao) Fix clicked .background images
 		$('#modal').addClass('active').append($(this).find('img').clone());
