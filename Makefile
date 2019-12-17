@@ -5,3 +5,5 @@ run:
 serv:
 	(cd sample/_site && php -S localhost:2345)
 
+clean:
+	rm -rf sample/_site
